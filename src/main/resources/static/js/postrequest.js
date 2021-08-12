@@ -73,6 +73,7 @@ function signUp() {
             }
         )
 }*/
+/*
 const postreq = function() {
     console.log("2");
     document.getElementById("signUpbtn").addEventListener('click', function ()) { console.log("1")
@@ -102,3 +103,42 @@ const postreq = function() {
     }
 }
     postreq();
+*/
+
+
+let fetchBtn = document.getElementById("signUpbtn");
+
+fetchBtn.addEventListener("click", buttonclickhandler);
+
+function buttonclickhandler() {
+
+    // Instantiate an new XHR Object
+    const xhr = new XMLHttpRequest();
+
+    // Open an obejct (GET/POST, PATH,
+    // ASYN-TRUE/FALSE)
+    xhr.open("POST",
+        window.location.href + "do_register", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    let user = {
+        firstName: $("#firstName").val(),
+        lastName: $("#lastName").val(),
+        email: $("#email").val(),
+        addressLine: $("#addressLine").val(),
+        gender: $("#gender").val(),
+        password: $("#password").val(),
+        state: $("#state").val(),
+        country: $("#country").val(),
+        zipCode: $("#zipCode").val()
+    }
+
+    xhr.onload = function () {
+        if (this.status === 200){
+
+        }
+        else {
+            console.log("Error ");
+        }
+    }
+    xhr.send(JSON.stringify(user));
+}
