@@ -1,0 +1,87 @@
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Assessment</title>
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/style.css}"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+
+        <form action="" id="signUpForm">
+            <h1>Register Now</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social"><i class="fab fa-apple"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <input  name="firstName" id="firstName" type="text" placeholder="Enter First Name" required/>
+            <input  name="lastName" id="lastName" type="text" placeholder="Enter Last Name" required/>
+            <input name="email" id="email" type="email" placeholder="Enter Email" required />
+
+            <input name="gender" id="gender" type="text" placeholder="Gender" required/>
+
+<!--            TODO: Commenting Radio button (Not Placing properly. will do it later)-->
+            <!--            <input type="radio" id="male" name="gender" value="male">-->
+<!--            <label for="male">Gender</label><br>-->
+<!--            <input type="radio" id="female" name="gender" value="female">-->
+<!--            <label for="female">female</label><br>-->
+<!--            <input type="radio" id="other" name="gender" value="other">-->
+<!--            <label for="other">other</label>-->
+
+            <input  name="addressLine" id="addressLine" type="text" placeholder="Enter Address" required />
+            <input  name="state" id="state" type="text" placeholder="Enter State" required />
+            <input  name="country" id="country" type="text" placeholder="Enter Country" required />
+            <input  name="zipCode" id="zipCode" type="text" placeholder="Enter Zip Code" required />
+            <input  name="password" id="password" type="password" placeholder="Enter Password" required/>
+            <button type="button" id="signUpbtn">Sign Up</button>
+        </form>
+    </div>
+
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>Sign In</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social"><i class="fab fa-apple"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button type="button" onclick="login()" id="login">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>Sign In & Enjoy Our Seemless Services</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Greetings, Friend!</h1>
+                <p>Click Below & Start Using Our Services!</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/main.js}  "></script>
+<script th:src="@{/js/postrequest.js}" ></script>
+<script type="application/javascript" src="https://kit.fontawesome.com/e2504ed527.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
