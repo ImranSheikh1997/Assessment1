@@ -26,7 +26,7 @@ public class UserController {
             @RequestBody(required = false) UserRequest user
     ){
         response.saveUser(user);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
@@ -35,7 +35,7 @@ public class UserController {
             @RequestBody(required = true) LogInRequest request
     ){
         response.logIn(request);
-        return new ResponseEntity<>("redirect:dashboard",HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     //Crud
