@@ -1,0 +1,180 @@
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+
+  <!-- START HERE -->
+    <nav th:replace ="/fragements/navbar :: navbar"></nav>
+  <header th:insert = "/fragements//header :: header(' Users')"></header>
+
+  <section id="search" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div th:insert = "/fragements/add_user_modal :: usermodal"></div>
+          <div class="col-md-6 ml-auto">
+            <div class="input-group">
+              <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Enter Email..."
+                id=""
+              />
+              <div class="input-group-append">
+                <button class="btn btn-warning" id="searchUser" >Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Latest categoires section-->
+    <section id="users">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>Latest Users</h4>
+              </div>
+              <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                    <th>Edit</th>
+                    <th>Show</th>                    
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="a:${users}">
+                  <td th:text="${a.id}"></td>
+                  <td th:text="${a.name}"></td>
+                  <td th:text="${a.email}"></td>
+                  <td th:text="${a.mobileNumber}"></td>
+                  <td th:text="${a.address}"></td>
+                  <td>
+                    <a th:href="@{edit}" class="btn btn-outline-secondary">
+                      <i class="far fa-edit"></i> Edit
+                    </a>
+                  </td>
+                  <td>
+                    <a href="#"
+                       data-toggle="modal"
+                       data-target="#displayUserModal"
+                    >
+                      <i class="fas fa-eye"></i>Show
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+  <footer th:insert = "/fragements//footer :: footer"></footer>
+
+            <!-- Display User modal -->
+            <div class="modal fade" id="displayUserModal">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header bg-warning text-white">
+                    <h5>Display user</h5>
+                    <button class="close" data-dismiss="modal">
+                      <span>&times;</span>
+                    </button>
+                  </div>          
+                  <div class="modal-body">
+                    <form action="#">
+                      <div class="col-md-3">
+                        <div class="card  text-dark bg-light mb-3">
+                          <div class="card-body justify-content-center">
+                            <h2 class="display-5">Profile Picture</h2>
+                                <img src="img/avatar.png" class="img-fluid mb-3" alt="">                          
+                          </div>
+                        </div>
+                      
+                      <div class="form-group">
+                        <label for="d_name">Name</label>
+                        <input type="text" name="d_name" id="d_name" class="form-control-plaintext" />
+                      </div>
+                      <div class="form-group">
+                        <label for="d_email">Email</label>
+                        <input
+                          type="email"
+                          name="d_email"
+                          id="d_email"
+                          class="form-control-plaintext"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="d_mobile_number">Mobile Number</label>
+                        <input
+                          type="number"
+                          name="d_mobile_number"
+                          id="d_mobile_number"
+                          class="form-control-plaintext"                  
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="d_addess">Address</label>
+                        <input
+                          type="text"
+                          name="d_addess"
+                          id="d_addess"
+                          class="form-control-plaintext fa-border"
+                        />
+                      </div>
+                  
+                </div>
+                      </form>
+                </div>
+              </div>
+            </div>
+              </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+  <script th:src="@{/js/post_request_add_user_modal.js}"></script>
+  <script th:src="@{/js/searchUserGetRequest.js}"> </script>
+  </body>
+</html>

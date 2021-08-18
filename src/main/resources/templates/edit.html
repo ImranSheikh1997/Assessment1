@@ -1,0 +1,129 @@
+
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/dashboard.css}"/>
+  </head>
+  <body>
+    <!-- START HERE -->
+
+
+    <nav th:replace ="/fragements/navbar :: navbar"></nav>
+
+    <header th:insert = "/fragements//header :: header(' Edit')"></header>
+    <footer th:insert = "/fragements/footer :: footer"></footer>
+
+    <!-- Actions -->
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a
+                    th:href="@{dashboard}"
+                    class="btn btn-light btn-block mb-sm-1">
+              <i class="fas fa-arrow-left"></i> Back To Dashboard
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a
+                    th:href="@{dashboard}"
+                    class="btn btn-success btn-block mb-sm-1"
+
+            >
+              <i class="fas fa-check"></i> Save Changes
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a
+                    th:href="@{dashboard}"
+                    class="btn btn-danger btn-block mb-sm-1"
+
+            >
+              <i class="fas fa-trash"></i> Delete Users
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- edit section-->
+    <section id="edit">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>Edit Users</h4>
+              </div>
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="" id="name" placeholder="name"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="" id="email" placeholder="email"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="text" class="form-control" name="" id="mobileNumber" placeholder="mobile number"/>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="adress">Address</label>
+                    <input type="text" class="form-control" name="" id="adress" placeholder="addess"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="image">Edit Image</label>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image" />
+                      <label for="image" class="custom-file-label"
+                      >Choose File</label
+                      >
+                    </div>
+                    <small class="text-muted">Max Size 3mb</small>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+      <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+    <script th:src="@{/js/script.js}"></script>
+  </body>
+</html>

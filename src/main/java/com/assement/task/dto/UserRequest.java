@@ -1,5 +1,6 @@
 package com.assement.task.dto;
 
+import com.assement.task.model.entity.Admin;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRequest {
+    private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String name;
+
     private String email;
-    private String gender;
-    private String addressLine;
-    private String country;
-    private String state;
-    private int zipCode;
-    private String password;
+
+    private String mobileNumber;
+
+    private String address;
+
+    private Long admin_id;
 }

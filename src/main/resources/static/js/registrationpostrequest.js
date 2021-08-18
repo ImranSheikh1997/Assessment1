@@ -27,11 +27,10 @@ function buttonclickhandler() {
         console.log();
         if (this.status == 200 && this.readyState == 4){
 
+            document.getElementById("msg").innerText = "User Successfully registered."
             container.classList.remove('right-panel-active');
-
         }
     }
-
 
     xhr.send(JSON.stringify(user));
 }

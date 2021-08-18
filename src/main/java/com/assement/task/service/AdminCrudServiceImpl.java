@@ -1,9 +1,9 @@
 package com.assement.task.service;
 
 import com.assement.task.config.exception.CustomException;
-import com.assement.task.dao.UserRepository;
-import com.assement.task.dto.UserRequest;
-import com.assement.task.model.entity.User;
+import com.assement.task.dao.AdminRepository;
+import com.assement.task.dto.AdminRequest;
+import com.assement.task.model.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserCrudServiceImpl implements UserCrudService{
+public class AdminCrudServiceImpl implements AdminCrudService{
 
     @Autowired
-    private UserRepository repository;
+    private AdminRepository repository;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -29,17 +29,18 @@ public class UserCrudServiceImpl implements UserCrudService{
     }
 
     @Override
-    public List<User> findAllUser() {
+    public List<Admin> findAllUser() {
         return repository.findAll();
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Admin findByEmail(String email) {
         return repository.findByEmail(email).get();
     }
 
+
     @Override
-    public void updateUser(UserRequest userRequest) {
+    public void updateUser(AdminRequest userRequest) {
         repository.updateUserByEmail(
                 userRequest.getEmail(),
                 userRequest.getAddressLine(),
@@ -57,7 +58,7 @@ public class UserCrudServiceImpl implements UserCrudService{
 
         /*To check User is available and current Password is valid password*/
         try{
-            Optional<User> user = repository.findByEmail(email);
+            Optional<Admin> user = repository.findByEmail(email);
             if (!user.isPresent()) {
                 throw new CustomException("Invalid username supplied", HttpStatus.UNAUTHORIZED);
             } else {
