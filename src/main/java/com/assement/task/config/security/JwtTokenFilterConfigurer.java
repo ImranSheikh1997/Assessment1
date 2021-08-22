@@ -1,4 +1,3 @@
-/*
 package com.assement.task.config.security;
 
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -21,4 +20,3 @@ public class JwtTokenFilterConfigurer extends SecurityConfigurerAdapter<DefaultS
   }
 
 }
-*/

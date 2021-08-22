@@ -22,6 +22,11 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/find_all_user")
+    public ResponseEntity<?> find_all_User(){
+
+        return new ResponseEntity<>(response.findAllUsers(), HttpStatus.OK);
+    }
     @GetMapping("/search_user/{email}")
     public ResponseEntity<?> search_user(
             @PathVariable String email

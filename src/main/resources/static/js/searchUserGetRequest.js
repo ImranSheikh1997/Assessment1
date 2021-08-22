@@ -9,13 +9,13 @@ function searchBtnHandler() {
     let email = $("#u_email").val();
 
     xhr.open("GET",
-        window.location.origin + "/search_user/"+email, true);
+        window.location.origin + "find_all_user", true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
-
+            console.log(localStorage.getItem("jwt"));
             let user = xhr.response;
             user = JSON.parse(user);
 

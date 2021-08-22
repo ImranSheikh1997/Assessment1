@@ -34,8 +34,7 @@ public class AdminController {
     public ResponseEntity<?> login(
             @RequestBody(required = true) LogInRequest request
     ){
-        response.logIn(request);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response.logIn(request), HttpStatus.ACCEPTED);
     }
 
     //Crud

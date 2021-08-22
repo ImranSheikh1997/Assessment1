@@ -1,9 +1,9 @@
-/*
+
 
 package com.assement.task.config.security;
 
-import com.shopiingbackend.blessmysales.dao.AdminRepository;
-import com.shopiingbackend.blessmysales.model.entity.Admin;
+import com.assement.task.dao.AdminRepository;
+import com.assement.task.model.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,4 +38,4 @@ public class MyUserDetails implements UserDetailsService {
 
 }
 
-*/
+

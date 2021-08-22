@@ -1,7 +1,8 @@
-/*
 package com.assement.task.config.security;
 
 
+import com.assement.task.config.exception.CustomException;
+import com.assement.task.model.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -32,10 +33,9 @@ public class JwtTokenProvider {
   @Autowired
   private JwtConfigProperties jwtConfigProperties;
 
-  @Value("${jwt.secret}")
+
   private String secretKey;
 
-  @Value("${jwt.token-validity}")
   private long validityInMilliseconds;
 
   @Autowired
@@ -47,7 +47,7 @@ public class JwtTokenProvider {
     this.validityInMilliseconds = jwtConfigProperties.getToken_validity();
     log.info("Secret Key -> ", this.secretKey);
     log.info("Validity -> ", this.validityInMilliseconds);
-    secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+    this.secretKey = Base64.getEncoder().encodeToString(this.secretKey.getBytes());
   }
 
   public String createToken(String username, List<Role> roles) {
@@ -56,7 +56,7 @@ public class JwtTokenProvider {
     claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
 
     Date now = new Date();
-    Date validity = new Date(now.getTime() + validityInMilliseconds);
+    Date validity = new Date(now.getTime() + this.validityInMilliseconds);
 
     return Jwts.builder()//
         .setClaims(claims)//
@@ -93,4 +93,4 @@ public class JwtTokenProvider {
   }
 
 }
-*/
+
