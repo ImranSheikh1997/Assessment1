@@ -38,4 +38,17 @@ public class UserResponse {
                     .collect(Collectors.toList());
 
     }
+
+    public UserRequest findUserByEmail(String email) {
+
+        return mapper.map(service.findUserByEmail(email), UserRequest.class);
+    }
+
+    public void updateUser(String email, UserRequest request) {
+        service.updateUser(email,request);
+    }
+
+    public void deleteUser(String email) {
+        service.deleteUser(email);
+    }
 }

@@ -25,15 +25,15 @@
 
   <section id="search" class="py-4 mb-4 bg-light">
       <div class="container">
-        <div th:insert = "/fragements/add_user_modal :: usermodal"></div>
+        <div id="adduserdiv" th:insert = "/fragements/add_user_modal :: usermodal"></div>
           <div class="col-md-6 ml-auto">
             <div class="input-group">
               <input
-                type="text"
+                type="email"
                 name="search"
                 class="form-control"
                 placeholder="Enter Email..."
-                id=""
+                id="u_email"
               />
               <div class="input-group-append">
                 <button class="btn btn-warning" id="searchUser" >Search</button>
@@ -65,7 +65,7 @@
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="user_tbody">
 
                 <tr th:each="a:${users}">
                   <td th:text="${a.id}"></td>
@@ -74,7 +74,7 @@
                   <td th:text="${a.mobileNumber}"></td>
                   <td th:text="${a.address}"></td>
                   <td>
-                    <a th:href="@{edit}" class="btn btn-outline-secondary">
+                    <a th:href="@{edit(email=${a.email})}" class="btn btn-outline-secondary">
                       <i class="far fa-edit"></i> Edit
                     </a>
                   </td>
@@ -82,6 +82,8 @@
                     <a href="#"
                        data-toggle="modal"
                        data-target="#displayUserModal"
+                       id="displayUser"
+                       th:onclick="displayUserBtnHandler([[${a.email}]])"
                     >
                       <i class="fas fa-eye"></i>Show
                     </a>
@@ -129,6 +131,7 @@
                           name="d_email"
                           id="d_email"
                           class="form-control-plaintext"
+                          readonly
                         />
                       </div>
                       <div class="form-group">
@@ -137,7 +140,8 @@
                           type="number"
                           name="d_mobile_number"
                           id="d_mobile_number"
-                          class="form-control-plaintext"                  
+                          class="form-control-plaintext"
+                          readonly
                         />
                       </div>
                       <div class="form-group">
@@ -147,6 +151,7 @@
                           name="d_addess"
                           id="d_addess"
                           class="form-control-plaintext fa-border"
+                          readonly
                         />
                       </div>
                   
@@ -176,5 +181,7 @@
 
   <script th:src="@{/js/post_request_add_user_modal.js}"></script>
   <script th:src="@{/js/searchUserGetRequest.js}"> </script>
+  <script th:src="@{/js/showUser.js}"> </script>
+
   </body>
 </html>

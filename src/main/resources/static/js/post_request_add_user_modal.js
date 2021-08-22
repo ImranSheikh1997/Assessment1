@@ -1,16 +1,11 @@
-console.log("inside js file");
-
 let fetchBtn = document.getElementById("addUserModalButton");
 
 fetchBtn.addEventListener("click", addUserHandler);
 
 function addUserHandler() {
 
-    console.log("inside js Function");
-
     // Instantiate an new XHR Object
     const xhr = new XMLHttpRequest();
-    console.log("inside function");
 
     xhr.open("POST",
         window.location.origin + "/add_user", true);
@@ -22,6 +17,12 @@ function addUserHandler() {
         email: $("#email").val(),
         mobileNumber: $("#mobile_number").val(),
         address: $("#address").val()
+    }
+
+    xhr.onreadystatechange = function () {
+        if (this.status == 200 && this.readyState == 4){
+             window.location.reload();
+        }
     }
 
     xhr.send(JSON.stringify(user));

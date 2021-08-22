@@ -36,6 +36,7 @@ public class AdminCrudServiceImpl implements AdminCrudService{
     @Override
     public Admin findByEmail(String email) {
         return repository.findByEmail(email).get();
+
     }
 
 

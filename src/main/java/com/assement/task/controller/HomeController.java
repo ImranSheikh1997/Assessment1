@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
+
 @Controller
 @Slf4j
 public class HomeController {
@@ -37,7 +39,11 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String edit(){
+    public String edit(
+            @RequestParam("email") String email,
+            Model model
+    ){
+            model.addAttribute("users", response.findUserByEmail(email));
         return "edit";
     }
 

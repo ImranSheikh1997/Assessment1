@@ -18,6 +18,7 @@ function buttonclickhandler() {
 
     xhr.onreadystatechange = function () {
         if (this.status == 200 || this.readyState == 4){
+            localStorage.jwt = xhr.response;
            window.location.href = window.location.href+"dashboard";
         }
         else {

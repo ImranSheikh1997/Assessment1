@@ -32,6 +32,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/header").permitAll()
                 .antMatchers("/do_register").permitAll()
                 .antMatchers("/add_user").permitAll()
+                .antMatchers("/search_user/**").permitAll()
+                .antMatchers("/edit/**").permitAll()//
+                .antMatchers("/update-user/**").permitAll()//
+                .antMatchers("/delete-user/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable();
     }

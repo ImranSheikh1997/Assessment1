@@ -24,7 +24,6 @@ function buttonclickhandler() {
     }
 
     xhr.onreadystatechange = function () {
-        console.log();
         if (this.status == 200 && this.readyState == 4){
 
             document.getElementById("msg").innerText = "User Successfully registered."
