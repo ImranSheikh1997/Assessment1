@@ -9,7 +9,7 @@ function displayUserBtnHandler(email) {
         window.location.origin + "/search_user/" + email, true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
+    xhr.setRequestHeader("Authorization","Bearer "+localStorage.getItem("jwt").toString());
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let user = xhr.response;
@@ -19,6 +19,9 @@ function displayUserBtnHandler(email) {
             document.getElementById("d_mobile_number").value = user.mobileNumber;
             document.getElementById("d_addess").value = user.address;
         }
+        /*else {
+            window.alert("UnAuthorized");
+        }*/
     }
     xhr.send();
 }

@@ -22,6 +22,12 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/index")
+    public String indexPage(
+    ){
+        return "index";
+    }
+
     @GetMapping("/dashboard")
     public String dashboard(){
         return "dashboard";

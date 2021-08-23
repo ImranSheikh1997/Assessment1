@@ -75,12 +75,15 @@ public class JwtTokenProvider {
     return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
   }
 
-  public String resolveToken(HttpServletRequest req) {
-    String bearerToken = req.getHeader("Authorization");
+  public String resolveToken(String bearerToken) {
+
+
     if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
       return bearerToken.substring(7);
     }
-    return null;
+    else {
+      return null;
+    }
   }
 
   public boolean validateToken(String token) {
