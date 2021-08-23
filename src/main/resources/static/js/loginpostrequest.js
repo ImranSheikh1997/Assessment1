@@ -23,7 +23,7 @@ function buttonclickhandler() {
 
             localStorage.setItem("jwt", response.jwt);
 
-            if(response != null) {
+            if(response.jwt != null) {
                 window.location.href = window.location.href + "dashboard";
             }
         }
