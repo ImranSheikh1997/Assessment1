@@ -1,9 +1,9 @@
 function displayUserBtnHandler(email) {
 
-    // console.log("working");
+    console.log("working");
     // Instantiate an new XHR Object
     const xhr = new XMLHttpRequest();
-    // console.log(email);
+    console.log(email);
 
     xhr.open("GET",
         window.location.origin + "/search_user/" + email, true);

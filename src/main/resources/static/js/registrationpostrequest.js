@@ -11,6 +11,7 @@ function buttonclickhandler() {
         window.location.href + "do_register", true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.setRequestHeader("authorization",localStorage.getItem("jwt").toString());
     let user = {
         firstName: $("#firstName").val(),
         lastName: $("#lastName").val(),

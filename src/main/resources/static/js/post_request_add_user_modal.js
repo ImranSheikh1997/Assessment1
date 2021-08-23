@@ -12,7 +12,8 @@ function addUserHandler() {
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     console.log(localStorage.getItem("jwt"));
-     xhr.setRequestHeader("Authorization","Bearer " + localStorage.getItem("jwt"));
+    xhr.setRequestHeader("authorization",localStorage.getItem("jwt").toString());
+     // xhr.setRequestHeader("Authorization","Bearer " + localStorage.getItem("jwt"));
     let user = {
         name: $("#name").val(),
         email: $("#email").val(),
