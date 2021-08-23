@@ -26,6 +26,9 @@ function buttonclickhandler() {
             if(response.jwt != null) {
                 window.location.href = window.location.href + "dashboard";
             }
+            else{
+                window.alert("Invalid UserName/Password Supplied");
+            }
         }
     }
     xhr.send(JSON.stringify(user));
