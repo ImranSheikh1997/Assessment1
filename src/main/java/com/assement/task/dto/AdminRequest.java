@@ -17,5 +17,4 @@ public class AdminRequest {
     private String country;
     private String state;
     private int zipCode;
-    private String password;
 }

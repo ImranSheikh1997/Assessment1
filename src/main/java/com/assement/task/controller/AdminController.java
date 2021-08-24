@@ -1,17 +1,18 @@
 package com.assement.task.controller;
 
-import com.assement.task.dto.AdminCrudResponse;
-import com.assement.task.dto.AdminRequest;
-import com.assement.task.dto.AdminResponse;
-import com.assement.task.dto.LogInRequest;
+import com.assement.task.config.security.JwtTokenProvider;
+import com.assement.task.dto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @Slf4j
+@CrossOrigin("*")
 public class AdminController {
 
 
@@ -21,9 +22,12 @@ public class AdminController {
     @Autowired
     private AdminCrudResponse crudResponse;
 
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
     @PostMapping("/do_register")
     public ResponseEntity<?> register(
-            @RequestBody(required = false) AdminRequest user
+            @RequestBody(required = false) AdminRegistrationRequest user
     ){
         response.saveUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -54,17 +58,21 @@ public class AdminController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
-    @GetMapping("/find-admin/{email}")
+//    @GetMapping("/find-admin/{email}")
+    @GetMapping("/findadmin")
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<?> findUser(
-            @PathVariable String email
+    public ResponseEntity<?> findAdmin(
+            HttpServletRequest httpServletRequest
     ){
+            String email = jwtTokenProvider.getCurrentUserSession(httpServletRequest.getHeader("Authorization"));
+//        String token = jwtTokenProvider.resolveToken(httpServletRequest.getHeader("Authorization"));
+//        String email = jwtTokenProvider.getUsername(token);
         return new ResponseEntity<>(crudResponse.get_UserProfile(email),HttpStatus.OK);
     }
 
     @PutMapping("/update-admin")
     public ResponseEntity<?> updateUser(
-            @RequestBody
+            @RequestBody(required = false)
                     AdminRequest userRequest
     )
     {
@@ -75,10 +83,11 @@ public class AdminController {
     //Password Change request
     @PutMapping("/change-password")
     public ResponseEntity<?> updatePassword(
-            @RequestParam("email")String email,
             @RequestParam("currentPassword") String currentPassword,
-            @RequestParam("newPassword") String newPassword
+            @RequestParam("newPassword") String newPassword,
+            HttpServletRequest httpServletRequest
     ){
+        String email = jwtTokenProvider.getCurrentUserSession(httpServletRequest.getHeader("Authorization"));
         crudResponse.changePassword(email,currentPassword,newPassword);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }

@@ -1,204 +1,201 @@
+
 <html xmlns:th="http://thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css"  th:href="@{/css/dashboard.css}"/>
-  </head>
-  <body>
-    <!-- START HERE -->
+<head onload="findAdmin()">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" type="text/css"  th:href="@{/css/dashboard.css}"/>
+</head>
+<body onload="adminBody()">
 
-    <nav th:replace ="/fragements/navbar :: navbar"></nav>
+<!-- START HERE -->
+<nav th:replace ="/fragements/navbar :: navbar"></nav>
 
-    <header th:insert = "/fragements//header :: header(' Edit Profile')"></header>
+<header th:insert = "/fragements//header :: header(' Edit Profile')"></header>
 
-    <!-- Actions -->
-    <section id="actions" class="py-4 mb-4 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <a
-              th:href="@{dashboard}"
-              class="btn btn-light btn-block mb-sm-1"
-             
-            >
-              <i class="fas fa-arrow-left"></i> Back To Dashboard
-            </a>
+<!-- Actions -->
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a
+                th:href="@{dashboard}"
+                class="btn btn-light btn-block mb-sm-1"
+
+        >
+          <i class="fas fa-arrow-left"></i> Back To Dashboard
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a
+                href="#"
+                class="btn btn-success btn-block mb-sm-1"
+                data-toggle="modal"
+                data-target="#changePasswordModal"
+        >
+          <i class="fas fa-lock"></i> Change Password
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a
+                href="#"
+                class="btn btn-danger btn-block mb-sm-1"
+
+        >
+          <i class="fas fa-trash"></i> Delete Account
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Edit Profile-->
+<section id="posts">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h4>Edit Profile</h4>
           </div>
-          <div class="col-md-3">
-            <a
-              href="#"
-              class="btn btn-success btn-block mb-sm-1"
-              data-toggle="modal"
-              data-target="#changePasswordModal"
-            >
-              <i class="fas fa-lock"></i> Change Password
-            </a>
-          </div>
-          <div class="col-md-3">
-            <a
-              href="#"
-              class="btn btn-danger btn-block mb-sm-1"
-             
-            >
-              <i class="fas fa-trash"></i> Delete Account
-            </a>
-          </div>          
-        </div>        
-      </div>      
-    </section>
+          <div class="card-body">
 
-
-    <!-- Edit Profile-->
-    <section id="posts">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header">
-                <h4>Edit Profile</h4>
+            <form onsubmit="return false" >
+              <div class="form-group">
+                <label for="p_firstName">First Name</label>
+                <input type="text" class="form-control" value="" name="firstName" id="p_firstName" placeholder=" "/>
               </div>
-              <div class="card-body">
-                  <form action="">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Imran "/>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Sheikh"/>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Imran@gmail.com"/>
-                      </div>                                                       
-
-                      <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <input type="text" class="form-control" name="gender" id="gender" placeholder="Male"/>
-                      </div>                                                        
-                      
-                      
-                      <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="address"/>
-                      </div>                                                        
-                      
-                      <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" class="form-control" name="country" id="country" placeholder="country"/>
-                      </div>                                                        
-                                          
-                      <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" class="form-control" name="state" id="state" placeholder="state"/>
-                      </div>                                  
-
-                      <div class="form-group">
-                        <label for="zipCode">ZipCode</label>
-                        <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="zipcode"/>
-                      </div>                                  
-                                            
-                      <div class="modal-footer">
-                        <button class="btn btn-success" data-dismiss="modal">
-                          Save Changes
-                        </button>
-                      </div>         
-                       
-                  </form>
+              <div class="form-group">
+                <label for="p_lastName">Last Name</label>
+                <input type="text" class="form-control" value="" name="lastName" id="p_lastName" placeholder=""/>
               </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card  text-dark bg-light mb-3">
-              <div class="card-body">
-                <h2 class="display-5">Your Avatar</h2>
-                    <img th:src="@{/img/avatar.png}" class="img-fluid mb-3" alt="">
-                <a href="#" class="btn btn-primary btn-sm d-block mt-2">Edit Image</a>
-                <a href="#" class="btn btn-danger btn-sm d-block mt-2">Delete Image</a>
+              <div class="form-group">
+                <label for="p_email">Email</label>
+                <input type="text" class="form-control" value="" name="email" id="p_email" placeholder=""/>
               </div>
-            </div>
-           
-            </div>
+              <div class="form-group">
+                <label for="p_gender">Gender</label>
+                <input type="text" class="form-control" value="" name="gender" id="p_gender" placeholder=""/>
+              </div>
+              <div class="form-group">
+                <label for="p_address">Address</label>
+                <input type="text" class="form-control" value="" name="address" id="p_address" placeholder="address"/>
+              </div>
+
+              <div class="form-group">
+                <label for="p_country">Country</label>
+                <input type="text" class="form-control" value="" name="country" id="p_country" placeholder="country"/>
+              </div>
+
+              <div class="form-group">
+                <label for="p_state">State</label>
+                <input type="text" class="form-control" value="" name="state" id="p_state" placeholder="state"/>
+              </div>
+
+              <div class="form-group">
+                <label for="p_zipCode">ZipCode</label>
+                <input type="text" class="form-control" value="" name="zipCode" id="p_zipCode" placeholder=""/>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="editAdmin()" data-dismiss="modal">
+                  Save Changes
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
+      <div class="col-md-3">
+        <div class="card  text-dark bg-light mb-3">
+          <div class="card-body">
+            <h2 class="display-5">Your Avatar</h2>
+            <img th:src="@{/img/avatar.png}" class="img-fluid mb-3" alt="">
+            <a href="#" class="btn btn-primary btn-sm d-block mt-2">Edit Image</a>
+            <a href="#" class="btn btn-danger btn-sm d-block mt-2">Delete Image</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-
-      <!-- Change Password modal -->
-      <div class="modal fade" id="changePasswordModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header bg-warning text-white">
-              <h5>Change Password</h5>
-              <button class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="">
-                <div class="form-group">
-                  <label for="currentPassword">Current Password</label>
-                  <input type="password" name="currentPassword" id="currentPassword" class="form-control" />
-                </div>
-                <div class="form-group">
-                  <label for="newPassword">New Password</label>
-                  <input
+<!-- Change Password modal -->
+<div class="modal fade" id="changePasswordModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-white">
+        <h5>Change Password</h5>
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="mainDiv">
+        <form  onsubmit='preventDefault(e)'>
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" name="currentPassword" id="currentPassword" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input
                     type="password"
                     name="newPassword"
                     id="newPassword"
                     class="form-control"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="confirmPassword">Confirm Password</label>
-                  <input
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
                     type="password"
                     name="confirmPassword"
                     id="confirmPassword"
-                    class="form-control"                  
-                  />
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-warning" data-dismiss="modal">
-                    Save Changes
-                  </button>
-                </div>
-              </form>
-            </div>
+                    class="form-control"
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="changePassword()" class="btn btn-warning" data-dismiss="modal">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <footer th:insert = "/fragements//footer :: footer"></footer>
 
-         <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<footer th:insert = "/fragements//footer :: footer"></footer>
 
-    <script src="js/script.js"></script>
-  </body>
+<script th:src= "@{/js/editAdminProfileAjax.js}"></script>
+<!--<script th:src= "@{/js/displayadminprofilepage.js}"></script>-->
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+></script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+</body>
 </html>

@@ -21,7 +21,7 @@ public class AdminResponse {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void saveUser(AdminRequest user) {
+    public void saveUser(AdminRegistrationRequest user) {
 
         //Encoding Password to Bcrypt format
         user.setPassword(passwordEncoder.encode(user.getPassword()));

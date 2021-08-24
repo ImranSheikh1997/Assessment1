@@ -33,6 +33,7 @@ public class JwtTokenProvider {
   @Autowired
   private JwtConfigProperties jwtConfigProperties;
 
+  private String token1;
 
   private String secretKey;
 
@@ -68,17 +69,22 @@ public class JwtTokenProvider {
 
   public Authentication getAuthentication(String token) {
     UserDetails userDetails = myUserDetails.loadUserByUsername(getUsername(token));
+
     return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
   }
 
   public String getUsername(String token) {
     return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
   }
-
+  //this method will accept bearer token and return current user
+  public String getCurrentUserSession(String bearerToken){
+    return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(resolveToken(bearerToken)).getBody().getSubject();
+  }
   public String resolveToken(String bearerToken) {
 
 
     if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+      this.token1 = bearerToken.substring(7);
       return bearerToken.substring(7);
     }
     else {

@@ -37,6 +37,7 @@ public class AdminCrudResponse {
 
     public AdminRequest get_UserProfile(String email) {
         Admin user = userCrudService.findByEmail(email);
+
         return modelMapper.map(user,AdminRequest.class);
     }
 
@@ -46,8 +47,9 @@ public class AdminCrudResponse {
 
     public void changePassword(String email, String currentPassword, String newPassword) {
 
-        newPassword = passwordEncoder.encode(newPassword);
         //converting newPassword to Bcrypt format.
+        newPassword = passwordEncoder.encode(newPassword);
+
         userCrudService.updatePassword(email,currentPassword,newPassword);
     }
 }

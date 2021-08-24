@@ -1,5 +1,7 @@
 package com.assement.task.controller;
 
+import com.assement.task.config.security.JwtTokenProvider;
+import com.assement.task.dto.AdminCrudResponse;
 import com.assement.task.dto.UserResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
@@ -15,6 +18,11 @@ public class HomeController {
 
     @Autowired
     private UserResponse response;
+    @Autowired
+    private AdminCrudResponse crudResponse;
+    @Autowired
+
+    private JwtTokenProvider jwtTokenProvider;
 
     @GetMapping("")
     public String showHomePage(
@@ -41,6 +49,7 @@ public class HomeController {
 
     @GetMapping("/profile")
     public String profile(){
+
         return "profile";
     }
 

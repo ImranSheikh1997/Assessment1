@@ -1,15 +1,14 @@
 function displayUserBtnHandler(email) {
 
-    console.log("working");
     // Instantiate an new XHR Object
     const xhr = new XMLHttpRequest();
-    console.log(email);
 
     xhr.open("GET",
         window.location.origin + "/search_user/" + email, true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.setRequestHeader("Authorization","Bearer "+localStorage.getItem("jwt").toString());
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let user = xhr.response;
