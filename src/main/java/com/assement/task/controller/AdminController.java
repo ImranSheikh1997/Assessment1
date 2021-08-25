@@ -91,4 +91,9 @@ public class AdminController {
         crudResponse.changePassword(email,currentPassword,newPassword);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+
+    @PostMapping("/verify-token")
+    public ResponseEntity<?> verifyToken(){
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

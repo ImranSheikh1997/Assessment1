@@ -14,11 +14,11 @@ let elements = {
 
 function adminBody() {
 
-
+    try {
         fetch(window.location.origin + '/findadmin', {
             method: 'GET',
             headers: {
-                Authorization: 'Bearer ' + localStorage.getItem("jwt").toString()
+                Authorization: 'Bearer ' + sessionStorage.getItem("jwt").toString()
             }
 
         }).then(response => response
@@ -36,11 +36,20 @@ function adminBody() {
             }
         )
             .catch((err) => {
+                document.write('<!--');
+
+                document.write('-->');
+                document.write(`<span class="bg-danger" > You are not Authorized To Access This Page</span>`);
                 console.error('Fetch Error : ', err);
             })
 
-    }
+    } catch (e) {
+        document.write('<!--');
 
+        document.write('-->');
+        document.write(`<span class="bg-danger" > You are not Authorized To Access This Page</span>`);
+    }
+}
 function editAdmin() {
     let user = {
         firstName: elements.firstName.value,
@@ -56,7 +65,7 @@ function editAdmin() {
     fetch(window.location.origin + '/update-admin', {
         method: 'PUT',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem("jwt").toString(),
+            Authorization: 'Bearer ' + sessionStorage.getItem("jwt").toString(),
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user),
@@ -81,7 +90,7 @@ function changePassword() {
         }), {
             method: "PUT",
             headers: {
-                Authorization: 'Bearer ' + localStorage.getItem("jwt").toString(),
+                Authorization: 'Bearer ' + sessionStorage.getItem("jwt").toString(),
                 'Content-Type': 'application/json'
             }
         }).then(response => {
@@ -94,5 +103,4 @@ function changePassword() {
     else{
         document.getElementById("mainDiv").innerHTML = `<span class="bg-danger"> invalid confirm password </span>`
     }
-
 }

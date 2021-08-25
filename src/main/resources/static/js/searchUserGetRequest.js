@@ -12,8 +12,8 @@ function searchBtnHandler() {
         window.location.origin + "/search_user/"+email, true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    console.log(localStorage.getItem("jwt"));
-    xhr.setRequestHeader("Authorization","Bearer "+localStorage.getItem("jwt").toString());
+    // console.log(sessionStorage.getItem("jwt"));
+    xhr.setRequestHeader("Authorization","Bearer "+sessionStorage.getItem("jwt").toString());
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
 

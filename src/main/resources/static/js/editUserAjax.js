@@ -6,7 +6,7 @@ function editUser(email) {
         window.location.origin + "/update-user/"+email, true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.setRequestHeader("authorization",localStorage.getItem("jwt").toString());
+    xhr.setRequestHeader("authorization",sessionStorage.getItem("jwt").toString());
     let user = {
         name: $('#e_name').val(),
         address: $("#e_adress").val(),

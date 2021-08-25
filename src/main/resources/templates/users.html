@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="css/dashboard.css" />
   </head>
-  <body>
+  <body onload="jwtAuthorization()">
 
   <!-- START HERE -->
     <nav th:replace ="/fragements/navbar :: navbar"></nav>
@@ -162,7 +162,7 @@
             </div>
               </div>
 
-
+  <script th:src= "@{/js/jwtAuthenticationAjax.js}"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

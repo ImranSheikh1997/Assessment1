@@ -21,9 +21,8 @@ function buttonclickhandler() {
             let response = xhr.response;
             response = JSON.parse(response);
 
-            localStorage.setItem("jwt", response.jwt);
-            localStorage.setItem("email", user.email);
-            // console.log(localStorage.getItem("email"));
+            sessionStorage.setItem("jwt", response.jwt);
+
             if(response.jwt != null) {
                 window.location.href = window.location.href + "dashboard";
             }

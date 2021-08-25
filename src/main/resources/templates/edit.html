@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" type="text/css"  th:href="@{/css/dashboard.css}"/>
   </head>
-  <body th:object="${users}">
+  <body th:object="${users}" onload="jwtAuthorization()">
     <!-- START HERE -->
 
 
@@ -101,6 +101,8 @@
       </div>
     </section>
     <footer th:insert = "/fragements/footer :: footer"></footer>
+
+    <script th:src= "@{/js/jwtAuthenticationAjax.js}"></script>
     <script th:src="@{/js/editUserAjax.js}"></script>
     <script th:src="@{/js/deleteUserAjax.js}"></script>
       <script
